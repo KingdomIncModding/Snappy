@@ -1,0 +1,44 @@
+[b]Snappy[/b]
+
+Adds three evenly spaced snap positions between each original Kingdom Inc grid position on both axes. A 64-unit interval becomes four 16-unit intervals: 0, 16, 32, 48, 64.
+
+[b]Features[/b]
+[list]
+[*]Finer node placement and dragging.
+[*]Quarter-grid snapping for purchase/copy previews, pipe bends, decorations and container resizing.
+[*]Preserves native pipe alignment and label offsets.
+[*]Hold Ctrl for the game's usual free placement.
+[*]Enabled automatically; no configuration or hotkey required.
+[/list]
+
+[b]Requirements[/b]
+Kingdom Inc (Unity Mono), BepInEx 5 and its bundled Harmony. Tested with Release v1.0.12, Unity 6000.3.27f2 and BepInEx 5.4.23.6. No other plugin is required.
+[url=https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.6]BepInEx official download[/url]
+
+[b]Installation[/b]
+1. Install BepInEx 5 for the game if needed.
+2. Close Kingdom Inc.
+3. Extract the ZIP into the game folder. The plugin belongs at BepInEx/plugins/Snappy/Snappy.dll.
+4. Launch the game and move a node.
+
+[b]Updating[/b]
+Close the game and replace Snappy.dll, then launch again. No save migration is required.
+
+[b]Compatibility[/b]
+The visible background grid keeps its original spacing; extra positions lie between its lines. Node sizes, port counts and minimum container size are unchanged. Existing layouts are not repositioned.
+
+353 isolated runtime checks passed, and the same 353 passed with the nine installed companion plugins loaded, including Port Layouts 1.0.1 and Sharable Blueprints 0.5.2. This verifies Snappy's native placement behavior with those plugins present, not every companion feature or shared blueprint format.
+
+Another plugin replacing WorldFlowManager.ClampToGrid may conflict. Manual installation is supported; Vortex deployment is untested. Gallery dots illustrate snapping positions and are not an in-game marker overlay.
+
+[b]Removal[/b]
+Close the game and delete BepInEx/plugins/Snappy. Existing fine positions survive native save loading without Snappy; further movement uses the normal grid.
+
+[b]Changes in 1.0.0[/b]
+Initial release with quarter-grid snapping on both axes.
+
+[b]Credits[/b]
+Created by Urakka. Uses BepInEx and Harmony installed separately. No game assemblies or artwork are bundled in the download.
+
+[b]Troubleshooting[/b]
+Check BepInEx/LogOutput.log for "Snappy ready". Include the game version, plugin version and relevant errors in bug reports.

@@ -1,0 +1,4 @@
+1.0.0
+- Adds quarter-grid snapping: 16-unit intervals instead of 64.
+- Applies to nodes, purchase/copy previews, pipe bends, decorations and container resizing.
+- Retains native Ctrl free placement, pipe/label offsets, collisions and save coordinates.
