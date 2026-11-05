@@ -4,15 +4,14 @@ Adds three evenly spaced snap positions between each original Kingdom Inc grid p
 
 [b]Features[/b]
 [list]
-[*]Finer node placement and dragging.
-[*]Quarter-grid snapping for purchase/copy previews, pipe bends, decorations and container resizing.
-[*]Preserves native pipe alignment and label offsets.
-[*]Hold Ctrl for the game's usual free placement.
-[*]Enabled automatically; no configuration or hotkey required.
+[*]Finer node placement and dragging.[/*]
+[*]Quarter-grid snapping for purchase/copy previews, pipe bends, decorations and container resizing.[/*]
+[*]Preserves native pipe alignment and label offsets.[/*]
+[*]Hold Ctrl for the game's usual free placement.[/*]
+[*]Enabled automatically; no configuration or hotkey required.[/*]
 [/list]
-
 [b]Requirements[/b]
-Kingdom Inc (Unity Mono), BepInEx 5 and its bundled Harmony. Tested with Release v1.0.12, Unity 6000.3.27f2 and BepInEx 5.4.23.6. No other plugin is required.
+Kingdom Inc (Unity Mono), BepInEx 5 and its bundled Harmony. No other plugin is required.
 [url=https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.6]BepInEx official download[/url]
 
 [b]Installation[/b]
@@ -27,15 +26,17 @@ Close the game and replace Snappy.dll, then launch again. No save migration is r
 [b]Compatibility[/b]
 The visible background grid keeps its original spacing; extra positions lie between its lines. Node sizes, port counts and minimum container size are unchanged. Existing layouts are not repositioned.
 
-353 isolated runtime checks passed, and the same 353 passed with the nine installed companion plugins loaded, including Port Layouts 1.0.1 and Sharable Blueprints 0.5.2. This verifies Snappy's native placement behavior with those plugins present, not every companion feature or shared blueprint format.
+Gallery dots illustrate snapping positions; the mod does not add a marker overlay.
 
-Another plugin replacing WorldFlowManager.ClampToGrid may conflict. Manual installation is supported; Vortex deployment is untested. Gallery dots illustrate snapping positions and are not an in-game marker overlay.
+The table lists potential patch overlaps; sharing a method does not by itself establish a conflict.
+
+[table]
+[tr][td][b]Class.Method[/b][/td][td][b]May conflict with[/b][/td][/tr]
+[tr][td]WorldFlowManager.ClampToGrid[/td][td]Grid-size or snapping replacements that return different coordinates or skip this patch.[/td][/tr]
+[/table]
 
 [b]Removal[/b]
 Close the game and delete BepInEx/plugins/Snappy. Existing fine positions survive native save loading without Snappy; further movement uses the normal grid.
-
-[b]Changes in 1.0.0[/b]
-Initial release with quarter-grid snapping on both axes.
 
 [b]Credits[/b]
 Created by Urakka. Uses BepInEx and Harmony installed separately. No game assemblies or artwork are bundled in the download.

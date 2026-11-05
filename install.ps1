@@ -6,6 +6,10 @@ $gameRunning = [bool](Get-Process -Name KingdomInc -ErrorAction SilentlyContinue
 if ($gameRunning -and !$StageForNextLaunch) { throw 'Close Kingdom Inc before installing Snappy, or use -StageForNextLaunch for a first installation.' }
 $source = Join-Path $PSScriptRoot 'bin\Release\netstandard2.1\Snappy.dll'
 if (!(Test-Path -LiteralPath $source)) { throw 'Build the Release project first.' }
+$foundation = Join-Path $GameRoot 'BepInEx\plugins\Foundation\Foundation.dll'
+if (!(Test-Path -LiteralPath $foundation) -or [Reflection.AssemblyName]::GetAssemblyName($foundation).Version -lt [Version]'0.5.0') {
+    throw 'Install Foundation 0.5.0 or later before installing Snappy.'
+}
 $destination = Join-Path $GameRoot 'BepInEx\plugins\Snappy'
 New-Item -ItemType Directory -Path $destination -Force | Out-Null
 $target = Join-Path $destination 'Snappy.dll'

@@ -30,6 +30,7 @@ namespace KingdomSnappy
         {
             InputSystem.QueueStateEvent(keyboard, pressed ? new KeyboardState(Key.LeftCtrl) : new KeyboardState());
             InputSystem.Update();
+            keyboard.MakeCurrent();
         }
 
         IEnumerator RuntimeCheck()
@@ -45,8 +46,9 @@ namespace KingdomSnappy
             {
                 Check(!GameUI.Instance && GamePlayer.Current == null, "No normal kingdom or save loaded");
                 Check(!SaveGame.LoadLatestSave(), "Diagnostic blocks latest-save loading");
-                VerifyGrid();
+                Check(!FineSnappingEnabled && WorldFlowManager.ClampToGrid(new Vector2Int(19, -19)) == Vector2Int.zero, "No kingdom uses native snapping");
                 var player = GamePlayer.CreateNewPlayer();
+                VerifyFoundationLocked(player);
                 player.Flows[0].Elements.Clear(); player.Flows[0].Pipes.Clear(); player.Flows[0].Decorations.Clear();
                 player.Flows[0].Label = "Snappy disposable verification";
                 player.AddTech("manifold");
@@ -65,9 +67,18 @@ namespace KingdomSnappy
             if (error == null) try
             {
                 Check(source.World && sink.World && pipe.World, "Native node and pipe prefabs loaded in Unity");
+                InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
                 keyboard = InputSystem.AddDevice<Keyboard>(); keyboard.MakeCurrent();
                 mouse = InputSystem.AddDevice<Mouse>(); mouse.MakeCurrent();
                 Control(keyboard, false);
+                OpenResearchMap();
+            }
+            catch (Exception ex) { error = ex.ToString(); }
+            yield return null;
+            if (error == null) try
+            {
+                VerifyFreeResearch();
+                VerifyGrid();
                 VerifyNode(source, sink, keyboard);
                 VerifyPipe(pipe, source, sink, keyboard);
                 VerifyGhost(source, keyboard);
@@ -81,6 +92,8 @@ namespace KingdomSnappy
                 {"passed", error == null}, {"version", Version}, {"gameVersion", Application.version},
                 {"unityVersion", Application.unityVersion}, {"bepInExVersion", typeof(BaseUnityPlugin).Assembly.GetName().Version.ToString()},
                 {"dllSha256", HashFile(typeof(SnappyPlugin).Assembly.Location)}, {"count", checks.Count},
+                {"foundationVersion", typeof(KingdomFoundation.Api.FoundationApi).Assembly.GetName().Version.ToString()},
+                {"foundationSha256", HashFile(typeof(KingdomFoundation.Api.FoundationApi).Assembly.Location)},
                 {"checks", new JsonArray(checks.Select(c => (JsonValue)c).ToArray())},
                 {"plugins", new JsonArray(BepInEx.Bootstrap.Chainloader.PluginInfos.Values.Select(p => (JsonValue)(p.Metadata.Name + " " + p.Metadata.Version)).ToArray())},
                 {"error", error ?? ""}
@@ -118,7 +131,7 @@ namespace KingdomSnappy
             }
             Control(keyboard, true);
             label.OnDragDropMove(start + new Vector2Int(19, -27), Vector2Int.zero);
-            Check(node.Position == start + new Vector2Int(19, -27), "Ctrl bypasses node snapping");
+            Check(node.Position == start + new Vector2Int(19, -27), "Ctrl bypasses node snapping: " + node.Position + ", Ctrl=" + keyboard.ctrlKey.isPressed);
             Control(keyboard, false);
             label.OnDragDropCancel();
             Check(node.Position == start, "Cancel restores exact original node position");
@@ -208,6 +221,7 @@ namespace KingdomSnappy
             var restored = FlowDiagram.FromJson(JsonValue.Parse(json));
             Check(restored.Elements.First().Position == source.Position, "Native JSON round trip retains fine node position");
             Check(restored.Pipes.First().Nodes.SequenceEqual(pipe.Nodes), "Native JSON round trip retains fine pipe bends");
+            VerifyResearchLifecycle();
             var method = AccessTools.Method(typeof(WorldFlowManager), nameof(WorldFlowManager.ClampToGrid));
             harmony.Unpatch(method, HarmonyPatchType.All, Id);
             Check(WorldFlowManager.ClampToGrid(new Vector2Int(19, -19)) == Vector2Int.zero, "Removing Snappy restores native 64-unit grid");

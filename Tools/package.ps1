@@ -8,12 +8,18 @@ $version = $metadata.Project.PropertyGroup.Version
 $dllHash = (Get-FileHash -LiteralPath $dll -Algorithm SHA256).Hash.ToLowerInvariant()
 if (!$report.passed -or $report.version -ne $version -or $report.dllSha256 -ne $dllHash) { throw 'Build must match passing isolated runtime checks.' }
 if (!$compat.passed -or $compat.version -ne $version -or $compat.dllSha256 -ne $dllHash) { throw 'Build must match passing companion runtime checks.' }
+$foundation = Join-Path $project '..\..\BepInEx\plugins\Foundation\Foundation.dll'
+$foundationHash = (Get-FileHash -LiteralPath $foundation -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($report.foundationSha256 -ne $foundationHash -or $compat.foundationSha256 -ne $foundationHash) {
+    throw 'Installed Foundation must match the dependency used in passing checks.'
+}
 $release = Join-Path $project 'Releases'
 New-Item -ItemType Directory -Path $release -Force | Out-Null
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $zipPath = Join-Path $release "KingdomInc-Snappy-$version.zip"
 if (Test-Path -LiteralPath $zipPath) { throw "Release already exists: $zipPath" }
 $entries = [ordered]@{
+    'Snappy requirements.txt' = (Join-Path $project 'Nexus\REQUIREMENTS.txt')
     'BepInEx/plugins/Snappy/Snappy.dll' = $dll
     'Snappy README.txt' = (Join-Path $project 'README.md')
 }
@@ -33,6 +39,7 @@ $record = [ordered]@{
     sha256 = (Get-FileHash -LiteralPath $zipPath -Algorithm SHA256).Hash.ToLowerInvariant()
     dllSha256 = $dllHash; runtimeChecksPassed = $report.count; cleanExtractionPassed = $true
     compatibilityChecksPassed = $compat.count; compatibilityPlugins = $compat.plugins
+    foundationMinimumVersion = '0.5.0'; foundationVersion = $report.foundationVersion; foundationSha256 = $foundationHash
     gameVersion = $report.gameVersion; unityVersion = $report.unityVersion; bepInExVersion = $report.bepInExVersion
     gameAssemblySha256 = (Get-FileHash -LiteralPath (Join-Path $project '..\..\KingdomInc_Data\Managed\Assembly-CSharp.dll')).Hash.ToLowerInvariant()
     publication = 'Local only'
