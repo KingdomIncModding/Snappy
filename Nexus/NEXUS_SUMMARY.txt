@@ -1,1 +1,0 @@
-Adds three extra snap positions between each original grid interval for finer node, pipe and decoration placement.

@@ -1,8 +1,0 @@
-1.1.0
-- Adds free Snappy research under Tech Tree → Mods.
-- Finer snapping activates when Snappy is researched and is saved per kingdom.
-- Requires Foundation 0.4.1 or later.
-- Preserves existing placements when updating.
-
-1.0.0
-- Initial release with three extra snap positions per original grid interval.

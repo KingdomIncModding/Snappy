@@ -1,0 +1,18 @@
+name: Feature request
+description: Suggest something you would like the mod to do.
+title: "[Feature] "
+body:
+  - type: textarea
+    id: request
+    attributes:
+      label: What would you like added?
+      description: Describe the change in plain words.
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: How would this help?
+      description: Explain when you would use it.
+    validations:
+      required: false

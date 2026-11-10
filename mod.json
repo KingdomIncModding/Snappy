@@ -1,0 +1,59 @@
+{
+  "id": "Snappy",
+  "name": "Snappy",
+  "version": "1.2.0",
+  "author": "Urakka",
+  "description": "Adds three extra snap positions between each original grid position for finer placement after unlocking Snappy research.",
+  "repository": {
+    "platform": "GitHub",
+    "owner": "urakkaamyx",
+    "name": "KingdomInc_Snappy",
+    "url": "https://github.com/urakkaamyx/KingdomInc_Snappy",
+    "branch": "main",
+    "visibility": "public",
+    "topics": [],
+    "latestTag": null
+  },
+  "distribution": {
+    "nexus": {
+      "game": "kingdominc",
+      "modId": 12,
+      "url": "https://www.nexusmods.com/kingdominc/mods/12",
+      "requirements": [
+        {
+          "name": "Foundation",
+          "url": "https://www.nexusmods.com/kingdominc/mods/18",
+          "minimumVersion": "0.11.0",
+          "type": "nexus"
+        },
+        {
+          "name": "BepInEx 5",
+          "url": "https://github.com/BepInEx/BepInEx/releases",
+          "minimumVersion": "5.x",
+          "type": "offsite"
+        }
+      ],
+      "tags": [
+        "AI-Generated Content",
+        "AI Media",
+        "Gameplay",
+        "Quality of Life"
+      ],
+      "tagsVerified": false,
+      "requirementsVerified": false
+    }
+  },
+  "development": {
+    "framework": "Foundation",
+    "language": "C#",
+    "target": "netstandard2.1",
+    "dependencies": [
+      "BepInEx 5",
+      "Foundation >= 0.11.0"
+    ]
+  },
+  "publishing": {
+    "githubReleases": null,
+    "nexusMods": null
+  }
+}
