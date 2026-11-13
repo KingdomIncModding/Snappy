@@ -11,3 +11,16 @@ obj/
 **/obj/
 .env
 .env.*
+/Nexus/
+/.github/ISSUE_TEMPLATE/
+# Local build outputs (never commit)
+/Release/
+/Debug/
+
+/.github/
+/.agents/
+/.claude/
+/.codex/
+/AGENTS.md
+/CLAUDE.md
+/GEMINI.md

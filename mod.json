@@ -1,9 +1,9 @@
 {
   "id": "Snappy",
   "name": "Snappy",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Urakka",
-  "description": "Adds three extra snap positions between each original grid position for finer placement after unlocking Snappy research.",
+  "description": "For Kingdom Inc game version 1.0.14. Adds three extra snap positions between each original grid position for finer placement after unlocking Snappy research.",
   "repository": {
     "platform": "GitHub",
     "owner": "urakkaamyx",
@@ -23,7 +23,7 @@
         {
           "name": "Foundation",
           "url": "https://www.nexusmods.com/kingdominc/mods/18",
-          "minimumVersion": "0.11.0",
+          "minimumVersion": "0.14.0",
           "type": "nexus"
         },
         {
@@ -39,8 +39,10 @@
         "Gameplay",
         "Quality of Life"
       ],
-      "tagsVerified": false,
-      "requirementsVerified": false
+      "tagsVerified": true,
+      "requirementsVerified": true,
+      "fileId": 8358726,
+      "runtimeVersionId": "46785078755463"
     }
   },
   "development": {
@@ -49,11 +51,13 @@
     "target": "netstandard2.1",
     "dependencies": [
       "BepInEx 5",
-      "Foundation >= 0.11.0"
-    ]
+      "Foundation 0.14.0"
+    ],
+    "gameIntegration": "Foundation"
   },
   "publishing": {
     "githubReleases": null,
-    "nexusMods": null
+    "nexusMods": null,
+    "archivePreviousReleases": false
   }
 }

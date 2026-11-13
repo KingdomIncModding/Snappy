@@ -1,4 +1,6 @@
-# Snappy 1.2.0
+# Snappy 1.2.1
+
+**Current release: 1.2.1 — for Kingdom Inc game version 1.0.14.**
 
 Snappy makes placement more precise in Kingdom Inc by adding three extra snap positions between each original grid point. A normal 64-unit interval becomes four 16-unit intervals: **0, 16, 32, 48, 64**.
 
@@ -14,7 +16,7 @@ Snappy makes placement more precise in Kingdom Inc by adding three extra snap po
 
 - Kingdom Inc (Windows, Unity Mono).
 - BepInEx 5.
-- **Foundation 0.11.0 or newer.**
+- **Foundation 0.14.0 or newer.**
 
 ## Installation and Use
 
@@ -34,6 +36,8 @@ To uninstall, close the game and remove `BepInEx/plugins/Snappy/`. Existing plac
 
 ## Compatibility
 
-Snappy changes the game's grid-snap calculation only while the research is unlocked. Other mods that replace the same snapping behavior may conflict. The extra snap positions do not add new lines to the background grid.
+| Class.Method | Hook Type | Impact |
+| --- | --- | --- |
+| `WorldFlowManager.ClampToGrid` | Foundation hook (prefix) | Uses 16-unit grid snapping after the free Snappy research is unlocked. Mods changing the same snapping method may conflict. |
 
 Created by Urakka.
