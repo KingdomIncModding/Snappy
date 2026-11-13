@@ -6,9 +6,9 @@
   "description": "For Kingdom Inc game version 1.0.14. Adds three extra snap positions between each original grid position for finer placement after unlocking Snappy research.",
   "repository": {
     "platform": "GitHub",
-    "owner": "urakkaamyx",
+    "owner": "KingdomIncModding",
     "name": "KingdomInc_Snappy",
-    "url": "https://github.com/urakkaamyx/KingdomInc_Snappy",
+    "url": "https://github.com/KingdomIncModding/KingdomInc_Snappy",
     "branch": "main",
     "visibility": "public",
     "topics": [],
