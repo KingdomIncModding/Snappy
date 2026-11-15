@@ -1,64 +1,66 @@
 {
-  "id": "Snappy",
-  "name": "Snappy",
-  "version": "1.2.2",
-  "author": "Urakka",
-  "description": "For Kingdom Inc game version 1.0.14. Adds three extra snap positions between each original grid position for finer placement after unlocking Snappy research.",
-  "repository": {
-    "platform": "GitHub",
-    "owner": "KingdomIncModding",
-    "name": "Snappy",
-    "url": "https://github.com/KingdomIncModding/Snappy",
-    "branch": "main",
-    "visibility": "public",
-    "topics": [],
-    "latestTag": "v1.2.1"
-  },
-  "distribution": {
-    "nexus": {
-      "game": "kingdominc",
-      "modId": 12,
-      "url": "https://www.nexusmods.com/kingdominc/mods/12",
-      "requirements": [
-        {
-          "name": "Foundation",
-          "url": "https://www.nexusmods.com/kingdominc/mods/18",
-          "minimumVersion": "0.14.4",
-          "type": "nexus",
-          "fileId": 8358756
-        },
-        {
-          "name": "BepInEx 5",
-          "url": "https://github.com/BepInEx/BepInEx/releases",
-          "minimumVersion": "5.x",
-          "type": "offsite"
-        }
-      ],
-      "tags": [
-        "AI-Generated Content",
-        "AI Media",
-        "Gameplay",
-        "Quality of Life"
-      ],
-      "tagsVerified": true,
-      "requirementsVerified": true,
-      "fileId": 8358726,
-      "runtimeVersionId": "46785078755463"
-    }
-  },
-  "development": {
-    "framework": "Foundation",
-    "language": "C#",
-    "target": "netstandard2.1",
-    "dependencies": [
-      "BepInEx 5",
-      "Foundation 0.14.4"
-    ],
-    "gameIntegration": "Foundation"
-  },
-  "publishing": {
-    "githubReleases": "https://github.com/KingdomIncModding/Snappy/releases/tag/v1.2.1",
-    "nexusMods": null,
-    "archivePreviousReleases": false
-  }
+    "id":  "Snappy",
+    "name":  "Snappy",
+    "version":  "1.2.2",
+    "author":  "Urakka",
+    "description":  "For Kingdom Inc game version 1.0.14. Adds three extra snap positions between each original grid position for finer placement after unlocking Snappy research.",
+    "repository":  {
+                       "platform":  "GitHub",
+                       "owner":  "KingdomIncModding",
+                       "name":  "Snappy",
+                       "url":  "https://github.com/KingdomIncModding/Snappy",
+                       "branch":  "main",
+                       "visibility":  "public",
+                       "topics":  [
+
+                                  ],
+                       "latestTag":  "v1.2.2"
+                   },
+    "distribution":  {
+                         "nexus":  {
+                                       "game":  "kingdominc",
+                                       "modId":  12,
+                                       "url":  "https://www.nexusmods.com/kingdominc/mods/12",
+                                       "requirements":  [
+                                                            {
+                                                                "name":  "Foundation",
+                                                                "url":  "https://www.nexusmods.com/kingdominc/mods/18",
+                                                                "minimumVersion":  "0.14.4",
+                                                                "type":  "nexus",
+                                                                "fileId":  8358756
+                                                            },
+                                                            {
+                                                                "name":  "BepInEx 5",
+                                                                "url":  "https://github.com/BepInEx/BepInEx/releases",
+                                                                "minimumVersion":  "5.x",
+                                                                "type":  "offsite"
+                                                            }
+                                                        ],
+                                       "tags":  [
+                                                    "AI-Generated Content",
+                                                    "AI Media",
+                                                    "Gameplay",
+                                                    "Quality of Life"
+                                                ],
+                                       "tagsVerified":  true,
+                                       "requirementsVerified":  true,
+                                       "fileId":  8358726,
+                                       "runtimeVersionId":  "46785078755463"
+                                   }
+                     },
+    "development":  {
+                        "framework":  "Foundation",
+                        "language":  "C#",
+                        "target":  "netstandard2.1",
+                        "dependencies":  [
+                                             "BepInEx 5",
+                                             "Foundation 0.14.4"
+                                         ],
+                        "gameIntegration":  "Foundation"
+                    },
+    "publishing":  {
+                       "githubReleases":  "https://github.com/KingdomIncModding/Snappy/releases/tag/v1.2.2",
+                       "nexusMods":  "https://www.nexusmods.com/kingdominc/mods/12",
+                       "archivePreviousReleases":  false
+                   }
 }
