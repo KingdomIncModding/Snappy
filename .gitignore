@@ -16,7 +16,6 @@ obj/
 # Local build outputs (never commit)
 /Release/
 /Debug/
-
 /.github/
 /.agents/
 /.claude/

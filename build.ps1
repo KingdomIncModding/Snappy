@@ -1,5 +1,5 @@
 param(
-    [string]$GameRoot = (Join-Path $PSScriptRoot '..\..\..')
+    [string]$GameRoot = (Join-Path $PSScriptRoot '..\..')
 )
 
 $ErrorActionPreference = 'Stop'

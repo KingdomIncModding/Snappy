@@ -7,7 +7,7 @@ namespace KingdomSnappy
     {
         internal static void Before(GameHookCall call)
         {
-            if (!FineGridPolicy.FineSnappingEnabled) return;
+            if (call.IsCancelled || !FineGridPolicy.FineSnappingEnabled) return;
             Vector2Int pos = call.Argument<Vector2Int>(0);
             int addedYOffset = call.Argument<int>(1);
             call.SetResult(new Vector2Int(

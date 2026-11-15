@@ -1,6 +1,6 @@
-# Snappy 1.2.1
+# Snappy 1.2.2
 
-**Current release: 1.2.1 — for Kingdom Inc game version 1.0.14.**
+**Current release: 1.2.2 — for Kingdom Inc game version 1.0.14.**
 
 Snappy makes placement more precise in Kingdom Inc by adding three extra snap positions between each original grid point. A normal 64-unit interval becomes four 16-unit intervals: **0, 16, 32, 48, 64**.
 
@@ -16,7 +16,7 @@ Snappy makes placement more precise in Kingdom Inc by adding three extra snap po
 
 - Kingdom Inc (Windows, Unity Mono).
 - BepInEx 5.
-- **Foundation 0.14.0 or newer.**
+- **Foundation 0.14.4 or newer.**
 
 ## Installation and Use
 
